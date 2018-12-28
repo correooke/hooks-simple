@@ -11,7 +11,7 @@ Se demuestra que el código producido es mucho más compacto comparado con la ut
 
 ## Live Demo
 
-Se puede acceder a una demostración en vivo del proyecto mediante CodeSandBox
+Se puede acceder a una demostración en vivo del proyecto mediante CodeSandBox. Por el momento arroja error ya que se trata de una versión alfa de React. 
 
 https://codesandbox.io/s/github/correooke/hooks-simple
 
