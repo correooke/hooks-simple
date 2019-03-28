@@ -1,20 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useDebugValue, useMemo } from 'react';
 
-const Timer = () => {
-    const [ seconds, setSeconds ] = useState(0);
+// Ver tamb Functional updates (setSeconds(seconds => seconds + 1))
+// Lazy initial state
+const useTimer = initialValue => {
+    const [ seconds, setSeconds ] = useState(initialValue);
+    useDebugValue(seconds);
     useEffect( () => {
         const interval = setInterval(() => {
-            setSeconds(seconds + 1);
+            setSeconds(sec => sec + 1);
         }, 1000);
 
         return () => {
             clearInterval(interval);
         };
-    }, [seconds]);
-
+    }, [seconds]);   
+    
+    return seconds;
+}
+const Timer = () => {
+    const seconds = useTimer(0);
+    
     return (
         <div className="timer">
-            <p>{seconds}</p>        
+            {
+                useMemo(() => <p>{seconds}</p>, [])
+            }        
         </div>
     );
 };

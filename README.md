@@ -13,7 +13,18 @@ useState: retorna un array de dos elementos. El primer elemento es una variable 
 
 useEffect: Se ejecuta asincrónicamente, después de las renderizaciones. Reemplaza a los métodos componentDidMount, componentDidUpdate y componentWillUnmount.
 
-useLayoutEffect: Es similar a useEffect, pero se ejecuta sincronicamentente.
+useLayoutEffect: Es similar a useEffect, pero se ejecuta sincronicamentente. Es reservado para manipulaciones del DOM que deben ser percibidas de manera inmediata por el usuario. 
+
+Linter: https://reactjs.org/docs/hooks-rules.html
+
+## Hooks adicionales 
+
+- const [state, dispatch] = useReducer(reducer, initialarg, init)
+- const text = useRef(value) // text.current.
+- const memoValue = useMemo(() => executeSomething(a), [a])
+- const memoCallback = useCallback(() => { doSomething(a, b)}, [a, b])
+- useImperativeHandle(ref, () => ({ action: () => }))
+- useDebugValue(value)
 
 ## Live Demo
 
