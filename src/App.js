@@ -6,8 +6,10 @@ import ThemeContext from './contexts/ThemeContext';
 import data from './data';
 import './App.css';
 
+
 const App = () => {
   
+  // Utilizando useData
   const [ items, setItems ] = useState(data);
 
   // El dato default es proporcionado por una función 
@@ -30,6 +32,9 @@ const App = () => {
         </button>
         <button onClick={() => setStyle(style => style === 'light' ? 'dark' : 'light')}>
           Theme: {style}
+        </button>
+        <button>
+          Add
         </button>
         {
           showTimer ? <Timer /> : null 

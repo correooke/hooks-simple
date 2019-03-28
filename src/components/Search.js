@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 const Search = ({ onChangeSearch }) => {
     const [ search, setSearch ] = useState('');
-    
-    useEffect( () => {
-        document.title = `Buscando ${search}`;
+    const thisinput = useRef(null)
+
+    useLayoutEffect( () => {
+        document.title = search ? search : `Buscando`;
     }, [search]);
+
+    useEffect(() => {
+        thisinput.current.focus();
+    })
 
     return (
         <div className='search'>
             <span>Búsqueda</span>
             <input type="text" 
+                ref={thisinput}
                 value={search} 
                 onChange={e => { 
                     const { value } = e.target;
