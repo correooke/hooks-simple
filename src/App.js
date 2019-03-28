@@ -9,7 +9,10 @@ import './App.css';
 const App = () => {
   
   const [ items, setItems ] = useState(data);
-  const [ showTimer, setShowTimer ] = useState(false)
+
+  // El dato default es proporcionado por una función 
+  // If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render
+  const [ showTimer, setShowTimer ] = useState(() => false)
   const [ style, setStyle ] = useState('light');
   const onChangeSearch = value => {
     const newItems = data.filter(item => item.title.toLowerCase().includes(value.toLowerCase()));
