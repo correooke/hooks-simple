@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useDebugValue, useMemo } from 'react';
+import React, { useState, useEffect, useDebugValue, useMemo, useContext } from 'react';
+import ThemeContext from './../contexts/ThemeContext';
 
 // Ver tamb Functional updates (setSeconds(seconds => seconds + 1))
 // Lazy initial state
@@ -19,11 +20,12 @@ const useTimer = initialValue => {
 }
 const Timer = () => {
     const seconds = useTimer(0);
-    
+    const theme = useContext(ThemeContext);
+
     return (
-        <div className="timer">
+        <div className={`timer ${theme}`}>
             {
-                useMemo(() => <p>{seconds}</p>, [])
+                useMemo(() => <p>{seconds}</p>, [seconds])
             }        
         </div>
     );
