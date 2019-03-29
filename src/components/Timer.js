@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useDebugValue, useMemo, useContext } from 'react';
+import React, { useState, useEffect, useDebugValue, useMemo, useContext, useRef } from 'react';
 import ThemeContext from './../contexts/ThemeContext';
 
 // Ver tamb Functional updates (setSeconds(seconds => seconds + 1))
@@ -21,11 +21,18 @@ const useTimer = initialValue => {
 const Timer = () => {
     const seconds = useTimer(0);
     const theme = useContext(ThemeContext);
-
+    const renderCounter = useRef(0);
+    
     return (
         <div className={`timer ${theme}`}>
             {
-                useMemo(() => <p>{seconds}</p>, [seconds])
+                useMemo(() => {
+                    renderCounter.current += 1;
+                    return <p>{seconds}</p>;
+            }, [seconds])
+            }
+            {
+              /*`(${renderCounter.current})`*/
             }        
         </div>
     );
